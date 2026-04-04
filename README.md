@@ -12,6 +12,7 @@ Create a folder to store the components e.g: safe-lane
 
 ## Installation
 pip install -r requirements.txt
+
 Clone the repository:
 
 
