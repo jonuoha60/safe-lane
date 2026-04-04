@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home{% endblock %}</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-brand">
+        <a href="/">SafeLane</a>
+    </div>
+
+    <button type="button" class="nav-toggle" id="navToggle">
+        ☰
+    </button>
+
+    <div class="nav-menu" id="navMenu">
+        {% if current_user.is_authenticated %}
+            <a href="/auth/profile" class="nav-link">Profile</a>
+            <a href="/auth/logout" class="nav-link btn-logout">Logout</a>
+        {% else %}
+            <a href="/auth/login" class="nav-link btn-login">Login</a>
+            <a href="/auth/signup" class="nav-link btn-signup">Sign Up</a>
+        {% endif %}
+    </div>
+</nav>
+
+<!-- MAIN -->
+<div class="home-container">
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>Driving Test Practice</h1>
+        <p>SafeLane helps you prepare for your G1 test with realistic questions and smart practice modes.</p>
+
+        <div class="home-buttons">
+            <a href="/practice-mode" class="btn-practice">Practice Mode</a>
+            <a href="/start-test" class="btn-start">Start Test</a>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+        <div class="feature-card">
+            <h3>📘 Real Questions</h3>
+            <p>Practice with questions similar to the real driving test.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>📊 Track Progress</h3>
+            <p>See your scores and improve your weak areas.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>⏱ Timed Tests</h3>
+            <p>Simulate real exam conditions with a timer.</p>
+        </div>
+    </div>
+
+    <!-- ONTARIO INFO -->
+ <div class="ontario-info">
+    <h2>Free Ontario G1 Practice Test</h2>
+    <p>
+        Our free G1 practice test is designed to help new drivers prepare for the Ontario written knowledge exam with 
+        no cost and no sign-up required. If you are at least 16 years old, you can visit a DriveTest centre and take 
+        the official G1 test, which includes 40 multiple-choice questions. The test is divided into two sections: 
+        20 questions on road signs and 20 questions on rules of the road. To pass, you must correctly answer at least 
+        16 questions in each section.
+
+        <br><br>
+
+        The real G1 test is based on the Ontario Driver’s Handbook, and our practice questions are designed to match 
+        the format and difficulty of the official exam. Ontario uses a graduated licensing system, meaning after you 
+        pass your G1 test, you must practice driving with a fully licensed driver and follow all G1 restrictions before 
+        moving on to your G2 licence.
+
+        <br><br>
+
+        Unlike other platforms, our practice tests are completely free and built to simulate the real testing experience. 
+        Many users find that practicing here helps them feel more confident and better prepared when they take the actual 
+        test at a DriveTest centre.
+    </p>
+</div>
+
+    <!-- REVIEWS -->
+    <div class="reviews">
+        <h2>What Our Users Say</h2>
+
+        <div class="review-grid">
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"I passed my G1 on the first try. The questions were almost identical!"</p>
+                <span>- Alex M.</span>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"The demerit point questions really helped. I would've failed without this."</p>
+                <span>- Sarah K.</span>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★☆</div>
+                <p>"Super clean design and easy to use. Practiced for 2 days and passed."</p>
+                <span>- Jason L.</span>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='index.js')}}"></script>
+</body>
+</html>

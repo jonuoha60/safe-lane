@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <nav
+     class="">
+    <button
+    type="button"
+    class="navbar-toggle">
+    open
+    </button>
+    <div id="navbar">
+        {% if current_user.is_authenticated %}
+        <h1>Welcome {{ current_user.username }}</h1>
+        <a class="navbar-nav" id="login" href="/auth/logout">
+            Logout
+        </a>
+        {% else %}
+        <a class="navbar-nav" id="login" href="/auth/login">
+            Login
+        </a>
+        <a class="navbar-nav" id="login" href="/auth/signup">
+            Signup
+        </a>
+        {% endif %}
+        
+    </div>
+    </nav>
+</body>
+</html>

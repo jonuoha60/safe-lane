@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver License Profile</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="license-wrapper">
+        <div class="license-card">
+            <div class="license-header">
+                <h2>Ontario Driver's License</h2>
+                <p>SafeLane Test Simulator</p>
+            </div>
+
+            <div class="license-body">
+                <div class="license-info">
+                    <p><strong>Name:</strong> {{ current_user.username }}</p>
+                    <p><strong>Email:</strong> {{ current_user.email }}</p>
+                    <p><strong>Status:</strong> G1 Driver</p>
+                    {% if progress %}
+                    <p><strong>Progress:</strong> {{ progress.percentage }}</p>
+                    <p><strong>Score:</strong> {{ progress.score }}</p>
+                    {% else %}
+                    <p><strong>Progress:</strong> No progress yet</p>
+                    {% endif %}
+                    <div class="progress-bar">
+<div class="progress-fill" style="width: {{ progress.percentage | default(0) }}%"></div>
+                    </div>
+                </div>
+
+                <div class="license-photo">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+
+            <div class="license-footer">
+                <p>License No: G1-2026-4582</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

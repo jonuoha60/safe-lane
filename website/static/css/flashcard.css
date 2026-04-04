@@ -1,0 +1,540 @@
+/* =====================================
+   Flashcard Container
+===================================== */
+.flashcard-stack {
+    position: relative;
+    width: 520px;
+    height: 320px;
+    margin: 30px auto;
+}
+
+/* =====================================
+   Progress Bar (FIXED + ALIGNED)
+===================================== */
+.progress-wrapper {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 999;
+}
+
+.progress-container {
+    width: 100%;
+    height: 10px;
+    background: #e6ecf3;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 3%;
+    background: linear-gradient(90deg, #4a90e2, #357abd);
+    transition: width 0.4s ease;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+/* =====================================
+   Flashcard
+===================================== */
+.flashcard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 18px;
+    overflow: visible;
+
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.4s ease;
+}
+
+.flashcard.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.card-image {
+    width: 100%;
+    max-width: 180px;
+    height: 140px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 12px;
+    background: transparent;
+}
+
+/* =====================================
+   Question Text
+===================================== */
+.card-question {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e2a38;
+
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+/* =====================================
+   Description Text
+===================================== */
+.card-description {
+    font-size: 1rem;
+    color: #6b7280;
+
+    background: #f1f5f9;
+    padding: 10px 14px;
+    border-radius: 10px;
+
+    margin-top: 8px;
+
+    font-weight: 500;
+}
+
+/* =====================================
+   Answer Text
+===================================== */
+.card-answer {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+
+    padding: 14px 20px;
+
+    border-radius: 12px;
+    margin-top: 15px;
+
+    text-align: center;
+
+
+}
+/* =====================================
+   Flip System
+===================================== */
+.flashcard-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease;
+}
+
+.flashcard-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* =====================================
+   Front & Back
+===================================== */
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(135deg, #ffffff, #f7f9fc);
+    border-radius: 18px;
+
+    box-shadow: 
+        0 10px 25px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+
+    backface-visibility: hidden;
+    text-align: center;
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+}
+
+/* =====================================
+   Text
+===================================== */
+#question {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #222;
+}
+
+#description {
+    font-size: 1.05rem;
+    color: #555;
+    margin-top: 14px;
+    line-height: 1.5;
+}
+
+/* =====================================
+   Buttons (UPGRADED)
+===================================== */
+.btn-front,
+.btn-back {
+    margin-top: 25px;
+    padding: 12px 26px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+
+    font-weight: 600;
+    font-size: 0.95rem;
+
+    cursor: pointer;
+
+    box-shadow: 
+        0 6px 15px rgba(74,144,226,0.4),
+        inset 0 -2px 0 rgba(0,0,0,0.1);
+
+    transition: all 0.25s ease;
+}
+
+.btn-front:hover,
+.btn-back:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 20px rgba(74,144,226,0.5);
+}
+
+.btn-front:active,
+.btn-back:active {
+    transform: translateY(1px);
+    box-shadow: 
+        0 4px 10px rgba(74,144,226,0.3),
+        inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* =====================================
+   Arrows
+===================================== */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 24px;
+    padding: 14px 18px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+    color: #333;
+
+    cursor: pointer;
+
+    /* box-shadow: 0 6px 18px rgba(0,0,0,0.25); */
+
+    z-index: 10;
+    transition: all 0.25s ease;
+}
+
+.arrow:hover {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    transform: translateY(-50%) scale(1.15);
+}
+
+.arrow.left {
+    left: -90px;
+}
+
+.arrow.right {
+    right: -90px;
+}
+
+/* =====================================
+   Filter Dropdown
+===================================== */
+.filter-dropdown {
+    width: 520px;
+    margin: 80px auto 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-family: "Work Sans", sans-serif;
+}
+
+/* Label */
+.filter-label {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Select */
+#filterSelect {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid #d0d7e2;
+
+    background: #f7f9fc;
+    color: #333;
+
+    font-weight: 500;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+#filterSelect:hover {
+    border-color: #4a90e2;
+}
+
+/* Focus */
+#filterSelect:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74,144,226,0.2);
+}
+
+/* =====================================
+   Exit Button
+===================================== */
+.exit-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    background: #ffffff;
+    color: #e71f1f;
+
+    border: none;
+    border-radius: 10px;
+
+    font-weight: 600;
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+    transition: all 0.25s ease;
+    z-index: 50;
+}
+
+/* Hover */
+.exit-btn:hover {
+    background: #4a90e2;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Icon sizing */
+.exit-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.answer-sheet {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.answer-sheet h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.quiz-top h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f7f7f7;
+}
+
+.quiz-mode {
+    display: flex;
+    justify-content: center;   /* horizontal center */
+    align-items: center;       /* vertical center */
+}
+
+.quiz-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 850px;          /* keeps it nicely sized */
+    display: none;
+}
+
+.quiz-card.active {
+    display: block;
+    z-index: 2;
+}
+
+.quiz-top-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.quiz-id {
+    font-size: 16px;
+    font-weight: 700;
+    color: #666;
+    margin: 0;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.quiz-question {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    flex: 1;
+    color: #111827;
+}
+
+.quiz-answers {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.quiz-answer {
+    font-size: 16px;
+    line-height: 1.5;
+    background: #f9fafb;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quiz-answer.correct {
+    background: #d1fae5;
+    border-color: #10b981;
+    color: #065f46;
+    font-weight: 600;
+}
+
+.quiz-answer.wrong {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #7f1d1d;
+}
+
+.quiz-answer:hover {
+    background: #f3f4f6;
+    transform: translateY(-1px);
+}
+
+.quiz-navigation {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+    gap: 12px;
+}
+
+.quiz-nav-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #111827;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quiz-nav-btn:hover {
+    background: #1f2937;
+    transform: translateY(-1px);
+}
+
+.quiz-nav-btn:active {
+    transform: translateY(0);
+}
+
+.quiz-trials-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 16px 0;
+    /* background-color: #f4f4f4; */
+    color: #222;
+    margin: 0;
+    margin-top: 22px;
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+}
+
+.quiz-trials {
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px;
+    
+}
+
+.quiz-results {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.quiz-results h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.quiz-results p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 10px 0;
+  color: #4b5563;
+}

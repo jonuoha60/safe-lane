@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Mode</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/practice.css') }}">
+</head>
+<body>
+
+<div class="practice-options-container">
+
+    <h1>Choose Practice Mode</h1>
+    <p>Select how you want to study and jump right in!</p>
+
+    <div class="practice-options">
+
+        <!-- Flashcards -->
+        <div class="option-card">
+            <h2>🧠 Flashcards</h2>
+            <p>Flip cards to learn questions and answers</p>
+            <a href="/practice-mode/flashcards" class="start-btn">Start</a>
+        </div>
+
+        <!-- Answer Sheet -->
+        <div class="option-card">
+            <h2>📝 Answer Sheet</h2>
+            <p>See questions with answers and explanations</p>
+            <a href="/practice-mode/answersheet" class="start-btn">Start</a>
+        </div>
+
+        <!-- Quiz Mode -->
+        <div class="option-card">
+            <h2>❓ Quiz Mode</h2>
+            <p>Test yourself with multiple questions</p>
+            <a href="/practice-mode/quiz" class="start-btn">Start</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
