@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models.models import User, Progress
+from ..models.models import User, Progress
 from werkzeug.security import generate_password_hash, check_password_hash
-from . import db, login_manager
+from .. import db, login_manager
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
 

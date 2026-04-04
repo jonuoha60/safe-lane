@@ -77,6 +77,7 @@ body {
 .progress-fill {
     height: 100%;
     background: #333;
+    transition: width 0.5s ease;
 }
 
 .license-footer {
