@@ -8,11 +8,10 @@ A Flask web application designed to help teens learn safe driving rules, practic
 
 ## Features
 - Practice driving test questions
+- Includes flashcards for effective studying
 - Learn road signs and traffic rules
 - User-friendly interface for teens
 - Built with Flask and Python
-
-Create a folder to store the components e.g: safe-lane
 
 ## Installation
 pip install -r requirements.txt
