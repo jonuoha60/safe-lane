@@ -18,7 +18,7 @@ cd safe-lane
 ## Run application
 In your root directory run:
 python main.py
-
+```
 ## Features
 - Practice driving test questions
 - Includes flashcards for effective studying
